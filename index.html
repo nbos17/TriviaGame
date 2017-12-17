@@ -5,6 +5,15 @@
   <meta charset="utf-8">
   <title>Trivia Game</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <style>
+    .Question {
+      background-color: blue;
+    }
+    .Answer {
+      background-color: red;
+    }
+
+  </style>
 </head>
 
 <body>
@@ -16,13 +25,82 @@
     <div class="row">
       <div class="col-md-12 Question">Q1</div>
     </div>
-    <div class="row">
-      <div class="col-md-12 Answer">Answers</div>
+    <div class="row Answer">
+      <div class="col-md-3" id ="Answer1">Answers</div>
+      <div class="col-md-3" id="Answer2">Answers</div>
+      <div class="col-md-3" id="Answer3">Answers</div>
+      <div class="col-md-3" id="Answer4">Answers</div>
     </div>
-</div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
+
+    var correct = 0;
+    var incorrect = 0;
+
+    var questionBank = [
+     {  
+        //number : 1,
+        name : "Who was our second President",
+        guess : ["George Washington", "Thomas Jefferson", "John Adams", "Ben Franklin"],
+        CorrectAnswer : "John Adams",
+        attempted : false
+      },
+      {
+        //number : 2,
+        name : "Who was head of Slytherin house?",
+        guess1 : "Dumbledore",
+        guess2 : "Snape",
+        guess3 : "Flitwick",
+        guess4 : "Voldemort",
+        CorrectAnswer : "Snape",
+        attempted : false
+      },
+    ];
+
+
+
+
+
+    //   Question : [["Who was our second President?"],["Who was head of Slytherin house in Harry Potter?"]],
+    //   Answer : [['George Washington', 'Thomas Jefferson', 'John Adams', 'Ben Franklin'],['Albus Dumbledore', 'Severus Snape', 'Lucius Malfoy', 'Rubeus Hagrid']],
+    //   CorrectAnswer : ["John Adams", "Severus Snape"]
+    // }
+
+    // for (i = 0; i > questionBank[0].guess.length; i++) {
+    //   var newDiv = $('<div>');
+    //   newDiv.text(questionBank.questionOne[i]);
+    //   $('.Answer').append(newDiv);
+
+
+    // }
+
+      var question = questionBank[0];
+      if (question.attempted === false) {
+
+       $('.Question').text(question.name);
+       $('#Answer1').text(question.guess[0]);
+       $('#Answer2').text(question.guess[1]);
+       $('#Answer3').text(question.guess[2]);
+       $('#Answer4').text(question.guess[3]);
+
+ 
+    }; 
+
+      
+    
+
+    
+
+
+
+   // $('.Question').text(questionBank.questionOne.name);
+    //$('#Answer1').text(this.guess1);
+    // $('#Answer2').text(questionBank.Answer[0][1]);
+    // $('#Answer3').text(questionBank.Answer[0][2]);
+    // $('#Answer4').text(questionBank.Answer[0][3]);
+
 
 
 
