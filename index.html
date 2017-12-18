@@ -26,10 +26,10 @@
       <div class="col-md-12 Question">Q1</div>
     </div>
     <div class="row Answer">
-      <div class="col-md-3" id ="Answer1">Answers</div>
+<!--       <div class="col-md-3" id ="Answer1">Answers</div>
       <div class="col-md-3" id="Answer2">Answers</div>
       <div class="col-md-3" id="Answer3">Answers</div>
-      <div class="col-md-3" id="Answer4">Answers</div>
+      <div class="col-md-3" id="Answer4">Answers</div> -->
     </div>
   </div>
 
@@ -38,8 +38,9 @@
 
     var correct = 0;
     var incorrect = 0;
+    numOfQuestions = 0;
 
-    var questionBank = [
+    var questions = [
      {  
         //number : 1,
         name : "Who was our second President",
@@ -59,49 +60,20 @@
       },
     ];
 
+  function selectQuestion(object) {
+    if (numOfQuestions < object.length ) {
+      for (i = 0; i < object[numOfQuestions].guess.length; i++) {
+        var n = $('<newDiv>');
+        n.addClass('answer');
+        n.text(object[numOfQuestions].guess[i]);
+        $('.Answer').append(n);
+      }
+
+      }
+    }
 
 
-
-
-    //   Question : [["Who was our second President?"],["Who was head of Slytherin house in Harry Potter?"]],
-    //   Answer : [['George Washington', 'Thomas Jefferson', 'John Adams', 'Ben Franklin'],['Albus Dumbledore', 'Severus Snape', 'Lucius Malfoy', 'Rubeus Hagrid']],
-    //   CorrectAnswer : ["John Adams", "Severus Snape"]
-    // }
-
-    // for (i = 0; i > questionBank[0].guess.length; i++) {
-    //   var newDiv = $('<div>');
-    //   newDiv.text(questionBank.questionOne[i]);
-    //   $('.Answer').append(newDiv);
-
-
-    // }
-
-      var question = questionBank[0];
-      if (question.attempted === false) {
-
-       $('.Question').text(question.name);
-       $('#Answer1').text(question.guess[0]);
-       $('#Answer2').text(question.guess[1]);
-       $('#Answer3').text(question.guess[2]);
-       $('#Answer4').text(question.guess[3]);
-
- 
-    }; 
-
-      
-    
-
-    
-
-
-
-   // $('.Question').text(questionBank.questionOne.name);
-    //$('#Answer1').text(this.guess1);
-    // $('#Answer2').text(questionBank.Answer[0][1]);
-    // $('#Answer3').text(questionBank.Answer[0][2]);
-    // $('#Answer4').text(questionBank.Answer[0][3]);
-
-
+selectQuestion(questions);
 
 
 
