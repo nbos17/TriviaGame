@@ -12,6 +12,9 @@
     .Answer {
       background-color: red;
     }
+    .answer {
+      margin-left: 30px;
+    }
 
   </style>
 </head>
@@ -26,10 +29,6 @@
       <div class="col-md-12 Question">Q1</div>
     </div>
     <div class="row Answer">
-<!--       <div class="col-md-3" id ="Answer1">Answers</div>
-      <div class="col-md-3" id="Answer2">Answers</div>
-      <div class="col-md-3" id="Answer3">Answers</div>
-      <div class="col-md-3" id="Answer4">Answers</div> -->
     </div>
   </div>
 
@@ -38,42 +37,79 @@
 
     var correct = 0;
     var incorrect = 0;
-    numOfQuestions = 0;
+    var numOfQuestions = 0;
+    var timeouts = 0;
+
+
 
     var questions = [
      {  
         //number : 1,
-        name : "Who was our second President",
+        name : "Who was our second President?",
         guess : ["George Washington", "Thomas Jefferson", "John Adams", "Ben Franklin"],
-        CorrectAnswer : "John Adams",
-        attempted : false
+        CorrectAnswer : 2,
+        attempted : false,
+        message : "John Adams"
       },
       {
         //number : 2,
         name : "Who was head of Slytherin house?",
-        guess1 : "Dumbledore",
-        guess2 : "Snape",
-        guess3 : "Flitwick",
-        guess4 : "Voldemort",
-        CorrectAnswer : "Snape",
+        guess : ["Dumbledore", "Snape", "Flitwick", "Voldemort"],
+        CorrectAnswer : 1,
         attempted : false
       },
     ];
 
   function selectQuestion(object) {
+    $('Question').show();
+    $('.Question').text(object[numOfQuestions].name);
     if (numOfQuestions < object.length ) {
       for (i = 0; i < object[numOfQuestions].guess.length; i++) {
-        var n = $('<newDiv>');
-        n.addClass('answer');
-        n.text(object[numOfQuestions].guess[i]);
-        $('.Answer').append(n);
+        var abc = $('<newDiv>');
+        abc.addClass('answer');
+        abc.val(i);
+        abc.text(object[numOfQuestions].guess[i]);
+        $('.Answer').append(abc);
       }
 
+      $('.answer').on("click", function() {
+      var userGuess = $(this).val();
+      userGuess = parseInt(userGuess);
+      console.log(userGuess);
+
+      if (userGuess === object[numOfQuestions].CorrectAnswer) {
+        alert('Correct!');
+        correct++;
+        object[numOfQuestions].attempted = true;
+        numOfQuestions++;
+        generateImage(questions);
+        //selectQuestion(questions);
       }
+      else {
+        alert('Incorrect!');
+        incorrect++;
+        object[numOfQuestions].attempted = true;
+        numOfQuestions++;
+      }
+
+    });
     }
+
+  }
 
 
 selectQuestion(questions);
+
+function generateImage (object) {
+  $('.answer').remove();
+  $('.Question').hide();
+  var winning = $('<newDiv>');
+  winning.addClass('display');
+  winning.text("The Correct Answer is " + object[numOfQuestions - 1].message);
+  $('.Answer').append(winning);
+
+  //selectQuestion(questions);
+}
 
 
 
