@@ -20,7 +20,8 @@ var selectedAnswer = false;
         guess : ["Dumbledore", "Snape", "Flitwick", "Voldemort"],
         CorrectAnswer : 1,
         attempted : false,
-        message : "Snape"
+        message : "Snape",
+        img : src="snape.jpg"
 
       },
       {
