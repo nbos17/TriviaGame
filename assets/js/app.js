@@ -135,10 +135,10 @@ function generateImage (object) {
   var img =$('<img>');
   img.src = 'assets/' + object[numOfQuestions - 1].imgFile + '.jpg';
   winning.addClass('display');
-  winning.text("The Correct Answer is " + object[numOfQuestions - 1].message);
+ // winning.text("The Correct Answer is " + object[numOfQuestions - 1].message);
   //winning.append(img);
   $('.Answer').append(winning);
-  $('.Answer').append(img);
+  //$('.Answer').append(img);
   pause();
 }
 
