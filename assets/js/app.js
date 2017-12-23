@@ -12,7 +12,7 @@ var selectedAnswer = false;
         CorrectAnswer : 2,
         attempted : false,
         message : "John Adams",
-        imgFile : 'adams'
+        image : 'assets/Images/adams.jpg'
       },
       {
         //number : 2,
@@ -21,7 +21,7 @@ var selectedAnswer = false;
         CorrectAnswer : 1,
         attempted : false,
         message : "Snape",
-        imgFile : 'snape'
+        image : 'assets/Images/snape.jpg'
 
       },
       {
@@ -29,14 +29,16 @@ var selectedAnswer = false;
         guess : ["Tom Brady", "Matt Ryan", "Russell Wilson", "Ben Roethlisberger"],
         CorrectAnswer : 0,
         attempted : false,
-        message : "Tom Brady"
+        message : "Tom Brady",
+        image : 'assets/Images/brady.jpg'
       },
       {
         name : "Who is the current Speaker of the House",
         guess : ["Mitch McConnell", "Mike Pence", "Chuck Schumer", "Paul Ryan"],
         CorrectAnswer : 3,
         attempted : false,
-        message : "Paul Ryan"
+        message : "Paul Ryan",
+        image : 'assets/Images/ryan.jpg'
       }
     ];
 
@@ -132,11 +134,11 @@ function generateImage (object) {
   $('.answer').remove();
   $('.Question').hide();
   var winning = $('<newDiv>');
-  //var img =$('<img>');
-  //img.src = 'assets/' + object[numOfQuestions - 1].imgFile + '.jpg';
+  var img =$('<img>');
+  img.attr('src', object[numOfQuestions - 1].image);
   winning.addClass('display');
   winning.text("The Correct Answer is " + object[numOfQuestions - 1].message);
-  //winning.append(img);
+  winning.append(img);
   $('.Answer').append(winning);
   //$('.Answer').append(img);
   pause();
