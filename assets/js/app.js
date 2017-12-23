@@ -93,7 +93,6 @@ var selectedAnswer = false;
       console.log(userGuess);
 
       if (userGuess === object[numOfQuestions].CorrectAnswer) {
-        //alert('Correct!');
         selectedAnswer = true;
         correct++;
         object[numOfQuestions].attempted = true;
@@ -101,7 +100,6 @@ var selectedAnswer = false;
         generateImage(questions);
       }
       else {
-        alert('Incorrect!');
         selectedAnswer = true;
         incorrect++;
         object[numOfQuestions].attempted = true;
@@ -135,12 +133,13 @@ function generateImage (object) {
   $('.Question').hide();
   var winning = $('<newDiv>');
   var img =$('<img>');
+  var text = $('<p>');
   img.attr('src', object[numOfQuestions - 1].image);
   winning.addClass('display');
-  winning.text("The Correct Answer is " + object[numOfQuestions - 1].message);
+  text.text("The Correct Answer is " + object[numOfQuestions - 1].message);
+  winning.append(text);
   winning.append(img);
   $('.Answer').append(winning);
-  //$('.Answer').append(img);
   pause();
 }
 
