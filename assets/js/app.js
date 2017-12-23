@@ -144,7 +144,7 @@ function generateImage (object) {
 }
 
 function timer() {
-  var t = 10;
+  var t = 15;
   var countdowns = setInterval(countdown, 1000);
     function countdown() {
       if (t === 0) {
